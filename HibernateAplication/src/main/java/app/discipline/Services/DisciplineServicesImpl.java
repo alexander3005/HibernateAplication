@@ -40,12 +40,12 @@ public class DisciplineServicesImpl  implements  DisciplineServices{
     @Override
     @Transactional
     public void update(Discipline discipline) {
-         this.disciplineDao.update(discipline);
+        this.disciplineDao.update(discipline);
     }
 
     @Override
     @Transactional
     public void delete(int id) {
-       this.disciplineDao.delete(id);
+        this.disciplineDao.delete(id);
     }
 }

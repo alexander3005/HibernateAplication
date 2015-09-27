@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Acer on 18.09.2015.
@@ -38,10 +35,10 @@ public class DisciplineController {
 
         if(discipline.getId() == 0){
 
-         this.disciplineServices.addDiscipline(discipline);
+            this.disciplineServices.addDiscipline(discipline);
         }else{
 
-           this.disciplineServices.update(discipline);
+            this.disciplineServices.update(discipline);
         }
 
         return "redirect:/disciplines";
@@ -51,7 +48,7 @@ public class DisciplineController {
     @RequestMapping("/removeDiscipline/{id}")
     public String removeDiscipline(@PathVariable("id") int id){
 
-       this.disciplineServices.delete(id);
+        this.disciplineServices.delete(id);
         return "redirect:/disciplines";
     }
 

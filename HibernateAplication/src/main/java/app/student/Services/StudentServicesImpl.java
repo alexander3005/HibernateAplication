@@ -21,13 +21,13 @@ public class StudentServicesImpl implements StudentServices {
     @Override
     @Transactional
     public void addStudent(Student student) {
-this.studentDao.addStudent(student);
+        this.studentDao.addStudent(student);
     }
 
     @Override
     @Transactional
     public List<Student> listStudent() {
-       return this.studentDao.listStudent();
+        return this.studentDao.listStudent();
 
     }
 
@@ -40,7 +40,7 @@ this.studentDao.addStudent(student);
     @Override
     @Transactional
     public void delete(int id) {
-this.studentDao.delete(id);
+        this.studentDao.delete(id);
     }
 
     @Override

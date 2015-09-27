@@ -1,15 +1,20 @@
 package app.discipline.Dao;
 
 import app.discipline.Model.Discipline;
+import app.student.Model.Student;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import javax.persistence.EntityManager;
+import java.util.*;
 
 /**
  * Created by Acer on 18.09.2015.
  */
+
 @Repository
 public class DisciplineDaoImpl implements DisciplineDao {
 

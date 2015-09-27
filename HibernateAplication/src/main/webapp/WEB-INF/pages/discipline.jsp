@@ -4,6 +4,7 @@
 <%@ page session="false" %>
 <html>
 <head>
+  <meta charset="windows-1251">
   <title>Discipline Page</title>
   <style type="text/css">
     .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
@@ -16,11 +17,12 @@
 <h1>
   Add a Discipline
 </h1>
-
+<meta charset="windows-1251">
 <c:url var="addAction" value="/discipline/add" ></c:url>
 
 <form:form action="${addAction}" commandName="discipline">
   <table>
+    <meta charset="windows-1251">
     <c:if test="${!empty discipline.nameDiscipline}">
       <tr>
         <td>

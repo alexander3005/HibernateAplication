@@ -5,14 +5,17 @@ import app.student.Model.Student;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
  * Created by Acer on 20.09.2015.
  */
+
 @Entity
- @Table(name="journal")
+@Table(name = "journal")
 public class Journal {
     private int id;
     private int studentId;
@@ -56,5 +59,8 @@ public class Journal {
 
     public void setDisciplineId(int disciplineId) {
         this.disciplineId = disciplineId;
+    }
+    public String toString(){
+        return id + "  " + disciplineId + "  "+ studentId;
     }
 }

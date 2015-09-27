@@ -1,67 +1,52 @@
 package app.journal.Controller;
 
 import app.journal.Services.JournalServices;
-import app.journal.model.Journal;
+import app.student.Model.Student;
+import app.student.Model.StudentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Created by Acer on 20.09.2015.
+ * Created by Acer on 27.09.2015.
  */
 @Controller
 public class JournalController {
     private JournalServices journalServices;
+
     @Autowired(required = true)
-    @Qualifier(value="journalServices")
+    @Qualifier(value = "journalServices")
     public void setJournalServices(JournalServices journalServices) {
         this.journalServices = journalServices;
     }
+   @RequestMapping(value = "/journal",method = RequestMethod.GET)
+    public String getAll(Model model){
 
+      List<Student> students=this.journalServices.getALL();
+List<StudentDTO> studentDTO=new ArrayList<StudentDTO>();
 
-
-
-
-    @RequestMapping(value = "/journals", method = RequestMethod.GET)
-    public String listJournal(Model model) {
-        model.addAttribute("journal", new Journal());
-        model.addAttribute("listJournals", this.journalServices.listJournal());
+      for(Student student:students){
+           StudentDTO dto=new StudentDTO();
+          dto.setId(student.getId());
+          dto.setFirstName(student.getFirstName());
+      dto.setSecondName(student.getSecondName());
+           dto.setDisciplineSet(student.getDisciplines());
+         studentDTO.add(dto);
+      }
+        model.addAttribute("journalsList", this.journalServices.getALL());
         return "journal";
     }
-
-
-    @RequestMapping(value= "/journal/add", method = RequestMethod.POST)
-    public String addJournal(@ModelAttribute("journal")Journal journal){
-
-        if(journal.getId() == 0){
-
-            this.journalServices.addJournal(journal);
-        }else{
-
-            this.journalServices.update(journal);
-        }
-
-        return "redirect:/journals";
-
-    }
-
     @RequestMapping("/removeJournal/{id}")
-    public String removeJournal(@PathVariable("id") int id){
-
+    public String getAll(@PathVariable("id") int id){
         this.journalServices.delete(id);
-        return "redirect:/journals";
+        return "redirect:/journal";
     }
-
-    @RequestMapping("/editJournal/{id}")
-    public String editJournal(@PathVariable("id") int id, Model model){
-        model.addAttribute("journal", this.journalServices.getById(id));
-        model.addAttribute("listJournals", this.journalServices.listJournal());
-        return "journal";
-    }
-
 }

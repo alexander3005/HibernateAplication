@@ -16,16 +16,8 @@
 <center>
   <a href="students">Student DataBase</a>
   <p>
-
-
-
+    <a href="journal">Journal DataBase</a>
   </p>
   <a href="disciplines">Discipline DataBase</a>
-  <p>
-
-
-
-  </p>
-  <a href="journals">Journal  DataBase</a>
 </center>
 </body>

@@ -1,7 +1,8 @@
 package app.journal.Services;
 
 import app.journal.model.Journal;
-import app.journal.model.Table;
+import app.student.Model.Student;
+import app.student.Model.StudentDTO;
 
 import java.util.List;
 
@@ -9,10 +10,6 @@ import java.util.List;
  * Created by Acer on 20.09.2015.
  */
 public interface JournalServices {
-    public void addJournal(Journal journal);
-    public List<Table> listJournal();
-    public void update(Journal journal);
+    public List<Student> getALL();
     public void delete(int id);
-
-    public Journal getById(int id);
 }

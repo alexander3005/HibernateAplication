@@ -1,8 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ page session="false" %>
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
+
 <head>
   <title>Journal Page</title>
   <style type="text/css">
@@ -12,38 +9,15 @@
     .tg .tg-4eph{background-color:#f9f9f9}
   </style>
 </head>
-<body>
-<h1>
-  Add a Discipline
-</h1>
 
-<c:url var="addAction" value="/journal/add" ></c:url>
 
-<form:form action="${addAction}" commandName="journal">
-  <table>
 
-    <tr>
-      <td>Student Id :</td>
-      <td><form:input path="studentId" disabled="false"/></td>
-    </tr>
-    <tr>
-      <td> Discipline Id:</td>
-      <td><form:input path="disciplineId" disabled="false"/></td>
-    </tr>
 
-    <tr>
-      <td colspan="2">
-
-          <input type="submit"
-                 value="<spring:message text="Add Journal"/>" />
-
-      </td>
-    </tr>
-  </table>
-</form:form>
 <br>
+
 <h3>Student  List</h3>
-<c:if test="${!empty listJournals}">
+
+
   <table class="tg">
     <tr>
       <td class="heading">Id</td>
@@ -53,26 +27,35 @@
       <th width="60">Edit</th>
       <th width="60">Delete</th>
     </tr>
-    <c:forEach items="${listJournals}" var="journal">
-      <tr>
+
+    <c:forEach items="${journalsList}" var="student" >
+
+      <c:forEach items="${student.disciplines}" var="discipline" >
+
         <td>
-            ${journal.journal.id}
+            ${student.id}
         </td>
         <td>
-            ${journal.student.secondName}
+            ${student.firstName}
         </td>
         <td>
-            ${journal.student.firstName}
+                ${student.secondName}
         </td>
+
         <td>
-            ${journal.discipline.nameDiscipline}
+            ${discipline.nameDiscipline}
         </td>
 
         <td><a href="<c:url value='/editJournal/${journal.id}' />" >Edit</a></td>
-        <td><a href="<c:url value='/removeJournal/${journal.id}' />" >Delete</a></td>
+        <td><a href="<c:url value='/removeJournal/${student.id}' />" >Delete</a></td>
       </tr>
+
+      </c:forEach>
+
     </c:forEach>
   </table>
-</c:if>
+
+
+
 </body>
 </html>

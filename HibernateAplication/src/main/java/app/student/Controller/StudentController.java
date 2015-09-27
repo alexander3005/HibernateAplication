@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * Created by Acer on 17.09.2015.
  */
- @Controller
+
+@Controller
 
 public class StudentController {
     private StudentServices studentServices;

@@ -1,19 +1,19 @@
 package app.journal.Services;
 
-import app.journal.Dao.JournalDao;
-import app.journal.model.Journal;
-import app.journal.model.Table;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.SecondaryTable;
-import java.util.List;
-
 /**
  * Created by Acer on 20.09.2015.
  */
+
+
+import app.journal.Dao.JournalDao;
+import app.student.Model.Student;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
 @Service
-public class JournalServicesImpl  implements  JournalServices{
+public class JournalServicesImpl implements JournalServices{
 
     private JournalDao journalDao;
 
@@ -23,31 +23,12 @@ public class JournalServicesImpl  implements  JournalServices{
 
     @Override
     @Transactional
-    public void addJournal(Journal journal) {
-        this.journalDao.addJournal(journal);
+    public List<Student> getALL() {
+        return this.journalDao.getALL();
     }
-
     @Override
     @Transactional
-    public List<Table> listJournal() {
-        return this.journalDao.listJournal();
-    }
-
-    @Override
-    @Transactional
-    public void update(Journal journal) {
-          this.journalDao.update(journal);
-    }
-
-    @Override
-    @Transactional
-    public void delete(int id) {
-      this.journalDao.delete(id);
-    }
-
-    @Override
-    @Transactional
-    public Journal getById(int id) {
-        return this.journalDao.getById(id);
+    public void delete(int id){
+        this.journalDao.delete(id);
     }
 }
