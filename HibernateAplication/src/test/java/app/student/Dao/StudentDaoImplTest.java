@@ -32,14 +32,7 @@ private Session session;
         return sessionFactory;
     }
   
-          public void before() {
-        sessionFactory = createSessionFactory();
-
-        session = sessionFactory.openSession();
-
-        Transaction transaction = session.beginTransaction();
-
-    }
+        
 
    
     public void testAddStudent() throws Exception {
@@ -53,7 +46,8 @@ sessionFactory =createSessionFactory();
          session.persist(student);
         List<Student> students1 =session.createQuery("from Student").list();
         assertTrue(students.size()< students1.size());
-
+session.close();
+        sessionFactory.close();
     }
 
   
@@ -67,6 +61,8 @@ sessionFactory =createSessionFactory();
         session.persist(student);
         List<Student> students=session.createQuery("from Student ").list();
        assertTrue(students.size()>0);
+session.close();
+        sessionFactory.close();
     }
 
    
@@ -84,6 +80,8 @@ Student student =new Student();
         assertEquals(student.getId(),student1.getId());
         assertEquals(student.getFirstName(),student1.getFirstName());
         assertEquals(student.getSecondName(),student1.getSecondName());
+session.close();
+        sessionFactory.close();
 
     }
 
@@ -100,6 +98,8 @@ sessionFactory =createSessionFactory();
         session.delete(student);
         List<Student> students1 =session.createQuery("from Student").list();
         assertEquals(students,students1);
+session.close();
+        sessionFactory.close();
 
     }
 }
